@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>update</h1>
+	<!--  Cross site Request Forgery -->
+	<!--   CSRF(Cross Site Request Forgery) : 웹사이트 취약점 공격의 하나로, 사용자가 자신의 의지와는 무관하게 공격자가 의도한 행위(수정, 삭제, 등록 등) -->
+	<!--  Django에서는 기본적으로 csrf token을 이용 -->
+	<form action="/updateres" method="POST">{%csrf_token%}
+		<input type="hidden" name="id" value="{{dto.id}}">
+		<table border="1">
+			<tr>
+				<th>작성자</th>
+				<td><input type="text" value="{{dto.myname}}"
+					readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td><input type="text" value="{{dto.mytitle}}" name="mytitle"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><textarea cols="60" rows="10" name="mycontent">{{dto.mycontent}}</textarea></td>
+			</tr>
+
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" value="수정">
+					<input type="button" value="취소" onclick="">
+				</td>
+			</tr>
+			
+		</table>
+
+	</form>
+
+</body>
+</html>
